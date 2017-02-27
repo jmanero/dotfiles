@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -e
+
+## Get the current branch name. Presumably, you're just merged this and want to clean it up...
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+MASTER=${1:-master}
+
+if [[ "${BRANCH}X" == "X" ]]; then
+  echo "Unable to detect current branch. Is this a git repository?"
+  exit 1
+fi
+
+if [[ ${BRANCH} == ${MASTER} ]]; then
+  echo "Already on branch ${MASTER}!"
+  exit 1
+fi
+
+git fetch origin ${MASTER}:${MASTER}
+git fetch origin --prune
+git checkout ${MASTER}
+git branch -d ${BRANCH}

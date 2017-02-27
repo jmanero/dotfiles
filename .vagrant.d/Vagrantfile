@@ -1,0 +1,54 @@
+module Helpers
+  ##
+  # Use aws-sdk to load the local environment's credential chain
+  ##
+  module AwsCredentials
+    class << self
+      def init
+        require 'aws-sdk'
+        @shared ||= Aws::SharedCredentials.new
+        true
+      rescue LoadError
+        puts 'Unable to load AWS-SDK. Please install it: `vagrant plugin install aws-sdk`'
+        false
+      rescue Aws::Errors::NoSuchProfileError
+        puts 'Unable to load AWS Credentials Profile.'
+        false
+      end
+
+      def key
+        @shared.credentials.access_key_id
+      end
+
+      def secret
+        @shared.credentials.secret_access_key
+      end
+
+      def session_token
+        @shared.credentials.session_token
+      end
+    end
+  end
+end
+
+Vagrant.configure('2') do |config|
+  config.vm.provider :virtualbox do |vb|
+    ## Define this before :aws
+  end
+
+
+  if Vagrant.has_plugin? 'vagrant-aws'
+    config.vm.provider :aws do |aws, override|
+      if Helpers::AwsCredentials.init
+        aws.access_key_id = Helpers::AwsCredentials.key
+        aws.secret_access_key = Helpers::AwsCredentials.secret
+        aws.session_token = Helpers::AwsCredentials.session_token
+      end
+
+      aws.keypair_name = 'jmanero'
+      override.ssh.private_key_path = File.join(ENV['HOME'], '.ssh/id_rsa')
+      override.vm.box = 'aws'
+      override.vm.box_url = 'https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box'
+    end
+  end
+end
