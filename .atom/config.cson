@@ -1,0 +1,70 @@
+"*":
+  "atom-beautify":
+    css:
+      indent_size: 2
+    html:
+      indent_size: 2
+    js:
+      break_chained_methods: true
+      end_with_newline: true
+      indent_size: 2
+      jslint_happy: true
+      space_after_anon_function: true
+    json:
+      end_with_newline: true
+      indent_size: 2
+    scss:
+      indent_size: 2
+  core:
+    destroyEmptyPanes: false
+    disabledPackages: [
+      "policeman-rubocop"
+      "linter-jscs"
+      "linter-jshint"
+    ]
+    excludeVcsIgnoredPaths: false
+    telemetryConsent: "no"
+    themes: [
+      "one-dark-ui"
+      "base16-tomorrow-dark-theme"
+    ]
+  editor:
+    fontSize: 12
+    invisibles: {}
+    scrollPastEnd: true
+    showInvisibles: true
+  linter:
+    lintDebug: true
+    statusBar: "Show error if the cursor is in range"
+  "linter-clang":
+    clangExecutablePath: "/usr/bin"
+    clangIncludePath: ". /usr/local/include"
+  "linter-csslint":
+    csslintExecutablePath: "/usr/local/bin"
+  "linter-eslint": {}
+  "linter-jscs":
+    jscsExecutablePath: "/usr/local/bin"
+  "linter-jshint":
+    jshintExecutablePath: "/usr/local/bin"
+  "linter-rubocop":
+    command: "/Users/jmanero/.rbenv/shims/rubocop"
+  "linter-ui-default":
+    showPanel: true
+  "node-debugger":
+    nodePath: "/usr/local/bin/node"
+  "release-notes":
+    viewedVersion: "0.94.0"
+  "spell-check":
+    grammars: [
+      "source.asciidoc"
+      "source.gfm"
+      "text.git-commit"
+      "text.plain"
+      "text.plain.null-grammar"
+      "source.js"
+      "source.json"
+      "source.yaml"
+    ]
+  "tree-view": {}
+  welcome:
+    showOnStartup: false

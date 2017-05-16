@@ -1,0 +1,14 @@
+blob-store/
+compile-cache/
+packages/
+storage/
+recovery/
+
+dev
+
+.apm
+.npm
+.node-gyp
+.DS_Store
+
+projects.cson
