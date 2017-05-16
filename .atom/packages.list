@@ -4,7 +4,6 @@ busy-signal
 docblockr
 intentions
 language-ejs
-language-ruby
 language-spice
 linter
 linter-clang
@@ -14,4 +13,3 @@ linter-rubocop
 linter-ui-default
 node-debugger
 sort-lines
-spell-check
