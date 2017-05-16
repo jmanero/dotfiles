@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -e
+
+GIT_EXECUTABLE="git"
+LOG_COMMAND="log"
+
+HASH_FORMAT="%Cred%h%Creset"
+AUTH_FORMAT="%C(bold green)<%an>%Creset"
+REFS_FORMAT="%C(yellow)%d%Creset"
+MESG_FORMAT="%s"
+DATE_FORMAT="%Cgreen(%cr)"
+
+FORMAT="$HASH_FORMAT $AUTH_FORMAT - $REFS_FORMAT $MESG_FORMAT $DATE_FORMAT"
+
+## Run git log
+${GIT_EXECUTABLE} ${LOG_COMMAND} --graph --pretty=format:"$FORMAT" --abbrev-commit --date=relative --branches --all

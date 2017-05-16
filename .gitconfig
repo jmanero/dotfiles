@@ -1,17 +1,17 @@
 [user]
   name = John Manero
-  email = jmanero@rapid7.com
+  email = john.manero@gmail.com
 
 [push]
   default = matching
 
 [alias]
   close = "!${HOME}/.gitconfig.d/bin/close ${1}"
-  l = log --graph --pretty=format:'%Cred%h%Creset %C(bold green)<%an>%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)' --abbrev-commit --date=relative --branches --all
+  l = "!${HOME}/.gitconfig.d/bin/pretty-log"
   fm = fetch origin master:master
   fp = fetch origin --prune
   fixup = "!f() { git rebase -i HEAD~${1-2}; }; f"
 
   yolo = !"git add --all && git commit -m \"YOLO\n\n Don't hate me for my swag\" && git push -f"
 [core]
-	editor = atom -w
+  editor = atom -w
